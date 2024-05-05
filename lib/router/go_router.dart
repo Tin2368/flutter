@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:widget_compose/entities/product.dart';
 import 'package:widget_compose/screens/home_screen.dart';
 import 'package:widget_compose/screens/product_detail_screen.dart';
 
@@ -12,8 +13,10 @@ final router = GoRouter(routes: [
         GoRoute(
           path: 'detail',
           builder: (context, state) {
-            return const ProductDetailScreen();
+            return ProductDetailScreen(product: state.extra as ProductToDisplay,);
           },
         )
-      ]),
-]);
+      ]
+      ),
+]
+);

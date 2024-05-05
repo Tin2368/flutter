@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void onSelectProduct(ProductToDisplay product) {
-    context.go('/detail');
+    context.go('/detail',extra: product);
   }
 
   @override
@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: categories.length,
                         itemBuilder: (context, index) {
                           return Column(
+                            key: UniqueKey(),
                             children: [
                               HomeJumbotron(
                                   imageUrl: categoryImages[categories[index]]!,
