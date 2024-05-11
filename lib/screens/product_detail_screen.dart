@@ -50,7 +50,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 PriceText(
                   price: '${product.price}\$',
                   fontsize: 30,
-                  color: Colors.redAccent,
+                  color: Colors.orangeAccent,
                 ),
               ],
             ),
