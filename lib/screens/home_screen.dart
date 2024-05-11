@@ -1,21 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 import 'package:widget_compose/di/get_it.dart';
 import 'package:widget_compose/entities/product.dart';
-import 'package:widget_compose/network/http/dio_service.dart';
-import 'package:widget_compose/repositories/product_repository.dart';
-import 'package:widget_compose/services/product_service.dart';
 // import 'package:widget_compose/mocks/products.dart';
-import 'package:widget_compose/widgets/compounds/cards/product_card.dart';
 import 'package:widget_compose/widgets/compounds/jumbotron/home_jumbotron.dart';
-import 'package:widget_compose/widgets/compounds/list/product_list.dart';
 import 'package:widget_compose/widgets/compounds/loading/loading_indicator.dart';
 import 'package:widget_compose/widgets/compounds/navbar/home_nav.dart';
 import 'package:widget_compose/widgets/compounds/sections/catalog.dart';
-import 'package:widget_compose/widgets/elements/inputs/search_input.dart';
 
 import '../mocks/products.dart';
 import '../port/product.dart';
@@ -32,6 +23,14 @@ class _HomePageState extends State<HomePage> {
 
   List<List<ProductToDisplay>> products = [];
   List<String> categories = [];
+
+   int _selectedIndex = 0;  // ตัวแปรเก็บ index ของ tab ที่เลือก
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;  // อัปเดต tab ที่เลือก
+    });
+  }
 
   bool isLoading = false;
 
@@ -93,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               const SizedBox(
                                 height: 24,
-                              )
+                              ),
                             ],
                           );
                         },
@@ -101,6 +100,25 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar( 
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',  
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',  
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile', 
+          ),
+        ],
+        currentIndex: _selectedIndex,  // กำหนด tab ที่เลือก
+        selectedItemColor: Colors.blue,  // สีของ tab ที่เลือก
+        onTap: _onItemTapped, 
+    ),
     );
   }
 }

@@ -26,7 +26,7 @@ class ProductCard extends StatelessWidget {
         width: width,
         height: height,
         child: Stack(children: [
-          Image.network(product.imageUrl, width: width, height: height, fit: BoxFit.cover,),
+          Image.network(product.imageUrl, width: width, height: height, fit: BoxFit.contain,),
           Column(
             children: [
               const Spacer(),

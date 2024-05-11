@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class PriceText extends StatelessWidget {
   final String price;
   final Color? color;
+  final double? fontsize;
 
-  const PriceText({super.key, required this.price, this.color});
+  const PriceText({super.key, required this.price, this.color, this.fontsize});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class PriceText extends StatelessWidget {
       price,
       style: TextStyle(
         color: color ?? Colors.white,
-        fontSize: 16,
+        fontSize: fontsize ?? 16 ,
         fontWeight: FontWeight.w800,
       ),
     );
